@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo Building project
+gcc test.c -o test
+

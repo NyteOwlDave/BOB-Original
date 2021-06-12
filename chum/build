@@ -1,0 +1,4 @@
+#!/bin/bash
+echo Building Project...
+gcc ex-02.c report.c image.c raw.c bmp.c bob.c vga.c pic.c -o exe
+
