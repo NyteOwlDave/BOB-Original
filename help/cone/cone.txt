@@ -1,0 +1,11 @@
+
+  // Cone definition
+  cone {
+    apex            x y z         // Where the apex point is located
+    base            x y z         // Where the base point is located
+    apex_radius     f             // Radius of the apex ring
+    base_radius     f             // Radius of the base ring
+    radius          f             // Radius of the base ring
+    clip            {}            // One or more clip blocks
+  }
+

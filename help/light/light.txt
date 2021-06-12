@@ -1,0 +1,20 @@
+
+  // Light definition
+  light {
+    type            directional   // Directional light
+    type            point         // Point light
+    type            spherical     // Spherical light
+    type            spot          // Spot light
+    at              x y z         // Point to shine at
+    center          x y z         // Location in world space
+    color           r g b         // Color of light
+    direction       x y z         // Direction light is pointing
+    falloff         f             // Falloff rate
+    radius          degrees       // Radius (spot or spherical)
+    max_angle       degrees       // Maximum angle (spot)
+    min_angle       degrees       // Minimum angle (spot)
+    samples         i             // Number of samples to shoot
+    no_shadows                    // Disable shadows
+    no_spec                       // Disable specular shine
+  }
+

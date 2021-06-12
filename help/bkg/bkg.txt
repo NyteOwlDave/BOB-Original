@@ -1,0 +1,10 @@
+
+  // Simple background color definition
+  background      r g b           // Solid background color
+
+  // Background definition
+  background {
+    color           r g b         // Background color
+    up              x y z         // Up direction
+    filename.map                  // RGB color map (256 entries)
+  }

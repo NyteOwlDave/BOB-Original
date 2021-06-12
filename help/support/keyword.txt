@@ -1,0 +1,11 @@
+across adaptive amb ambient amp amplitude angle antialias aperture apex apex_radius aspect
+at background base base_radius bkg blend bump bunching caustics center checker
+clip clip_pop color cone corners damping depth diff diffuse direction directional
+falloff fisheye flat focal_length from fuzz global_clip haze image inside ior
+jitter light max_angle max_radius min_angle min_radius no_antialias no_exp_trans
+no_parallax no_shadows no_spec noise none normal offset orthogonal outside
+patch pattern phase point points polygon position projection quick radius res
+resolution ring rotate samples scale shine spec specular sphere spherical spot start
+stop studio surf surface terms texture threshold transform transform_pop translate
+transparent tri turb turbulence type up vertex vtx vv_newfile vv_popfile wave wavelength
+width xpar

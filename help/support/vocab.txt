@@ -1,0 +1,575 @@
+
+  VOCABULARY
+  ==========
+
+    A condensed list of all keywords used by the BOB Interpreter is provided
+    in the KEYWORDS.TXT file.
+
+    Another copy of this list may be obtained from the BOB Source language
+    definition in NotePad++.
+
+  A
+
+    across adaptive amb ambient amp amplitude angle antialias aperture apex
+    apex_radius aspect at
+
+  B
+
+    background base base_radius bkg blend bump bunching
+
+  C
+
+    caustics center checker clip clip_pop color cone corners
+
+  D
+
+    damping depth diff diffuse direction directional
+
+  F
+
+    falloff fisheye flat focal_length from fuzz
+
+  G
+    global_clip
+
+  H
+
+    haze
+
+  I
+
+    image inside ior
+
+  J
+
+    jitter
+
+  L
+
+    light
+
+  M
+
+    max_angle max_radius min_angle min_radius
+
+  N
+
+    no_antialias no_exp_trans no_parallax no_shadows no_spec noise none normal
+
+  O
+
+    offset orthogonal outside
+
+  P
+
+    patch pattern phase point points polygon position projection
+
+  Q
+
+    quick
+
+  R
+
+    radius res resolution ring rotate
+
+  S
+
+    samples scale shine spec specular sphere spherical spot start stop studio
+    surf surface
+
+  T
+    terms texture threshold transform transform_pop translate transparent tri
+    turb turbulence type
+
+  U
+
+    up
+
+  V
+
+    vertex vtx vv_newfile vv_popfile
+
+  W
+
+    wave wavelength width
+
+  X
+
+    xpar
+
+
+
+  CATEGORIZED BY CONTEXT
+  ======================
+
+    Most of the keywords may only be used in a specific context or scope.
+    Some, however may be used in more than one way. The following few sections
+    show the specific contexts in which each keyword may be used.
+
+    We start with the top level (outside any braces). We then detail what can
+    be used within each set of curly braces. We list only full keywords (not
+    their shorter synonyms).
+
+    A list of synonyms is provided in the THESAURUS.TXT file.
+
+
+  TOP LEVEL
+  =========
+
+  Keywords:
+
+    studio light surface
+    transform transform_pop
+    vv_newfile vv_popfile
+    global_clip clip_pop
+    cone patch polygon ring sphere
+
+  Syntax:
+
+    vv_newfile      <filename>
+    cone            {}
+    global_clip     {}
+    light           {}
+    patch           {}
+    polygon         {}
+    ring            {}
+    sphere          {}
+    surface         {}
+    studio          {}
+    transform       {}
+    clip_pop
+    transform_pop
+    vv_popfile
+
+
+  STUDIO {}
+  =========
+
+  Context:
+
+    Top level
+
+  Keywords:
+
+    at from up
+    aperture angle focal_length samples
+    aspect projection width
+    resolution
+    start stop
+    bunching
+    ambient background haze
+    antialias threshold
+    depth
+    caustics jitter no_shadows no_exp_trans
+
+  Syntax:
+
+    ambient         <vec>
+    at              <vec>
+    from            <vec>
+    up              <vec>
+
+    angle           <float>
+    aperture        <float>
+    aspect          <float>
+    focal_length    <float>
+    haze            <float>
+    width           <float>
+
+    bunching        <int>
+    depth           <int>
+    resolution      <int> <int>
+    samples         <int>
+    start           <int>
+    stop            <int>
+    threshold       <int>
+
+    projection      <flat|fisheye|no_parallax|orthogonal>
+    antialias       <none|corners|quick|adaptive>
+
+    background      {}
+
+    jitter
+    no_exp_trans
+    no_shadows
+    caustics
+
+
+  BACKGROUND {}
+  =============
+
+  Context:
+
+    studio {}
+
+  Keywords:
+
+    color up
+
+  Syntax:
+
+    color           <vec>
+    up              <vec>
+    <filename>
+
+
+  LIGHT {}
+  ========
+
+  Context:
+
+    Top level
+
+  Keywords:
+
+    type
+    at center direction
+    color falloff
+    radius min_angle max_angle
+    samples
+    no_shadows no_spec
+
+  Syntax:
+
+    type            <point|spot|spherical|directional>
+    at              <vec>
+    center          <vec>
+    color           <vec>
+    direction       <vec>
+    falloff         <float>
+    radius          <float>
+    max_angle       <float>
+    min_angle       <float>
+    samples         <int>
+    no_shadows
+    no_spec
+
+
+  SURFACE {}
+  ==========
+
+  Context:
+
+    Top level
+    texture {}
+
+  Keywords:
+
+    ambient diffuse specular transparent
+    shine
+    ior fuzz
+    bump texture
+    no_antialias
+
+  Syntax:
+
+    ambient         <vec>
+    diffuse         <vec>
+    specular        <vec>
+    transparent     <vec>
+    shine           <float>
+    shine           <float> <vec>
+    fuzz            <float>
+    ior             <float>
+    ambient         {}
+    bump            {}
+    diffuse         {}
+    specular        {}
+    texture         {}
+    transparent     {}
+    no_antialias
+
+
+  TEXTURE {}
+  ===========
+
+  Context:
+
+    surface {}
+
+  Keywords:
+
+    pattern
+    scale translate
+    radius blend fuzz
+    terms
+    surface turbulence wave
+
+  Syntax:
+
+    pattern         <checker|noise|spherical>
+    scale           <vec>
+    translate       <vec>
+    blend           <float>
+    fuzz            <float>
+    radius          <float>
+    scale           <float>
+    terms           <int>
+    surface         {}
+    turbulence      {}
+    wave            {}
+
+
+  BUMP {}
+  =======
+
+  Context:
+
+    surface {}
+
+  Keywords:
+
+    scale translate
+    turbulence wave
+
+  Syntax:
+
+    scale         <vec>
+    translate     <vec>
+    scale         <float>
+    turbulence    {}
+    wave          {}
+
+
+  TURBULENCE {}
+  =============
+
+  Context:
+
+    texture {}
+    bump {}
+
+  Keywords:
+
+    amplitude
+    scale translate
+    terms
+
+  Syntax:
+
+    scale           <vec>
+    translate       <vec>
+    amplitude       <float>
+    scale           <float>
+    terms           <int>
+
+
+  WAVE {}
+  =======
+
+  Context:
+
+    texture {}
+    bump {}
+
+  Keywords:
+
+    center
+    wavelength phase
+    amplitude damping
+
+  Syntax:
+
+    center          <vec>
+    wavelength      <float>
+    damping         <float>
+    amplitude       <float>
+    phase           <float>
+
+
+  AMBIENT {}
+  DIFFUSE {}
+  SPECULAR {}
+  TRANSPARENT {}
+  ==============
+
+    * These are texture maps.
+      They're only allowed with a surface block.
+
+  Keywords:
+
+    across center normal
+    scale
+    image
+
+  Syntax:
+
+    across          <vec>
+    center          <vec>
+    normal          <vec>
+    scale           <float>
+    image           <filename>
+
+
+  TRANSFORM {}
+  ============
+
+  Context:
+
+    Top level
+
+  Keywords:
+
+    rotate scale translate
+
+  Syntax:
+
+    rotate          <vec>
+    scale           <vec>
+    translate       <vec>
+    scale           <float>
+
+
+  GLOBAL_CLIP {}
+  ==============
+
+  Context:
+
+    Top level
+
+  Keywords:
+
+    clip
+
+  Syntax:
+
+    clip            {}
+
+
+  CLIP {}
+  =======
+
+  Context:
+
+    global_clip     {}
+    cone            {}
+    patch           {}
+    polygon         {}
+    ring            {}
+    sphere          {}
+
+  Keywords:
+
+    center normal radius
+    apex apex_radius
+    base base_radius
+    inside outside
+
+  Syntax:
+
+    normal          <vec>
+    center          <vec>
+    radius          <float>
+    apex            <vec>
+    apex_radius     <float>
+    base            <vec>
+    base_radius     <float>
+    inside
+    outside
+
+
+  CONE {}
+  =======
+
+  Context:
+
+    Top level
+
+  Keywords:
+
+    apex apex_radius
+    base base_radius
+    radius
+    clip
+
+  Syntax:
+
+    apex            <vec>
+    base            <vec>
+    apex_radius     <float>
+    base_radius     <float>
+    radius          <float>
+    clip            {}
+
+
+  PATCH {}
+  ========
+
+  Context:
+
+    Top level
+
+  Keywords:
+
+    normal vertex
+    clip
+
+  Syntax:
+
+    normal          <vec>
+    vertex          <vec>
+    clip            {}
+
+
+  POLYGON {}
+  ==========
+
+  Context:
+
+    Top level
+
+  Keywords:
+
+    points vertex
+    clip
+
+  Syntax:
+
+    points          <int>
+    vertex          <vec>
+    clip            {}
+
+
+  RING {}
+  =======
+
+  Context:
+
+    Top level
+
+  Keywords:
+
+    center normal
+    radius min_radius max_radius
+    clip
+
+  Syntax:
+
+    center          <vec>
+    normal          <vec>
+    max_radius      <float>
+    min_radius      <float>
+    radius          <float>
+    clip            {}
+
+
+  SPHERE {}
+  =========
+
+  Context:
+
+    Top level
+
+  Keywords:
+
+    center
+    radius fuzz
+    clip
+
+  Syntax:
+
+    center          <vec>
+    fuzz            <float>
+    radius          <float>
+    clip            {}
+

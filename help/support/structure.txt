@@ -1,0 +1,323 @@
+
+  STRUCTURES
+  ==========
+
+  Listed here all of the structures recognized by the BOB Interpreter. Be
+  aware that these structures may be used in a variety of ways.
+
+  Not all of the recognized keywords within any given structure are required
+  to make proper use of that structure in practice.
+
+  For example, most have default values and may be omitted. Some also have
+  multiple syntactic forms.
+
+  One good example of this is the scale keyword, which (generally) may accept
+  a vector (for discrete values) or a single float (for uniform values).
+
+
+  SYNTAX
+  ======
+
+  The general syntax rules are fairly simple. You have just a few kinds of
+  tokens:
+
+    Whitespace, punctuation, keywords, filenames, numbers and vectors.
+    
+  Whitespace consists of blank spaces, tabs, linefeeds and comments.
+
+  Punctuation is used only to enclose structure blocks or as a normal syntax
+  for filenames or numbers.
+
+  Keywords are used to give readability and determine the meaning of other
+  tokens.
+
+  Filenames may be relative or fully specified. Relative filenames use the
+  search paths defined in the BOB environment variable.
+
+  Numbers may be integers or floating point values. When the interpreter
+  expects an integer and a floating point value is detected, it's rounded to
+  the nearest integer.
+
+  Vectors are ordered triplets of numbers. They may represent various kinds of
+  data, such as a color, point or unit normal.
+
+  We'll used the following notation in this document to indicate various data
+  types:
+
+    r g b         color vector
+    x y z         point or normal vector
+    i             integer value
+    w h           integer width and height
+    line          integer scan line number (zero based)
+    f             floating point value
+    degrees       floating point angle in degrees
+    filename      relative or fully qualified filename
+    {}            embedded structure's data block (defined elsewhere)
+
+
+  FLAGS
+  =====
+
+  Some keywords are used as flags. They have no arguments and their purpose is
+  indicated by both name and context. For example, in the context of the studio
+  block, the jitter keyword enables camera jitter. It requires no arguments to
+  accomplish this, so it's used by itself.
+
+
+  CLIPPING
+  ========
+
+  The CLIP structure has an unusual behavior. There are three kinds of clips:
+
+    Plane, cone and sphere
+
+  But there is no way to explicitly state the kind of clip. Rather, the kind is
+  inferred based on which values are defined within the structure.
+
+  STRUCTURES
+  ==========
+
+  studio
+  background
+  light
+  surface
+  texture
+  bump
+  turbulence
+  wave
+  ambient
+  diffuse
+  specular
+  transparent
+  transform
+  global_clip
+  clip
+  cone
+  patch
+  polygon
+  ring
+  sphere
+
+
+  STRUCTURE USAGE
+  ===============
+
+  // Studio definition
+  studio {
+
+    ambient         r g b         // Ambient color
+    at              x y z         // Point to observe
+    from            x y z         // Eye location
+    up              x y z         // Up direction
+
+    angle           degrees       // Field of view
+    aperture        f             // Lens aperture
+    aspect          f             // View aspect ratio
+    focal_length    f             // Lens focal length
+    haze            f             // Haze density
+    width           f             // Lens aperture width
+
+    bunching        i             // Composite shape bunch size
+    depth           i             // Maximum recursion depth
+    resolution      w h           // View dimensions
+    samples         i             // Sample count (non-pinhole lens)
+    start           line          // Session start line
+    stop            line          // Session stop line
+    threshold       i             // Adaptive threshold
+
+    jitter                        // Enable camera jitter
+    no_exp_trans                  // Disable experimental transparency
+    no_shadows                    // Disable shadows
+    caustics                      // Enable caustic effects
+
+    projection      fisheye       // Fisheye projection
+    projection      flat          // Flat projection
+    projection      no_parallax   // Same as flat
+    projection      orthogonal    // Perspective projection
+
+    antialias       none          // No antialiasing
+    antialias       corners       // Average four pixel corners
+    antialias       quick         // Quick sliding window
+    antialias       adaptive      // Adaptive sliding window
+
+    background      r g b         // Solid background color
+    background      {}            // Color plane background
+  }
+
+  // Background definition
+  background {
+    color           r g b         // Background color
+    up              x y z         // Up direction
+    filename.map                  // RGB color map (256 entries)
+  }
+
+  // Light definition
+  light {
+    type            directional   // Directional light
+    type            point         // Point light
+    type            spherical     // Spherical light
+    type            spot          // Spot light
+    at              x y z         // Point to shine at
+    center          x y z         // Location in world space
+    color           r g b         // Color of light
+    direction       x y z         // Direction light is pointing
+    falloff         f             // Falloff rate
+    radius          degrees       // Radius (spot or spherical)
+    max_angle       degrees       // Maximum angle (spot)
+    min_angle       degrees       // Minimum angle (spot)
+    samples         i             // Number of samples to shoot
+    no_shadows                    // Disable shadows
+    no_spec                       // Disable specular shine
+  }
+
+  // Surface definition
+  surface {
+    ambient         r g b         // Ambient color
+    diffuse         r g b         // Diffuse color
+    specular        r g b         // Specular color
+    transparent     r g b         // Transparent color
+    fuzz            f             // Fuzziness
+    ior             f             // Index of refraction
+    shine           f             // Shine coefficient
+    shine           f r g b       // Shine coefficient and color
+    ambient         {}            // Ambient texture map
+    diffuse         {}            // Diffuse texture map
+    specular        {}            // Specular texture map
+    transparent     {}            // Transparent texture map
+    bump            {}            // Bump map
+    texture         {}            // Procedural texture
+    no_antialias                  // Disable antialiasing
+  }
+
+  // Texture definition
+  texture {
+    pattern         checker       // Checkerboard pattern
+    pattern         noise         // Noise pattern
+    pattern         spherical     // Spherical pattern
+    translate       x y z         // Translate texture space
+    scale           x y z         // Scale texture space (discrete)
+    blend           f             // Blend coefficient
+    fuzz            f             // Fuzziness coefficient
+    radius          f             // Radius (1 or 2)
+    scale           f             // Scale texture space (uniform)
+    terms           i             // Number of terms
+    turbulence      {}            // Turbulence block
+    wave            {}            // Noise block
+    surface         {}            // Surface block (0, 1 or 2)
+  }
+
+  // Bump definition
+  bump {
+    scale           x y z         // Scale bump space (discrete)
+    translate       x y z         // Traslate bump space
+    scale           f             // Scale bump space (uniform)
+    turbulence      {}            // Turbulence block
+    wave            {}            // Wave block
+  }
+
+  // Turbulence definition
+  turbulence {
+    scale           x y z         // Scale turbulence space (discrete)
+    translate       x y z         // Translate tubluence space
+    scale           f             // Scale turbulence space (uniform)
+    amplitude       f             // Amplification coefficient
+    terms           i             // Number of terms
+  }
+
+  // Wave definition
+  wave {
+    center          x y z         // Location in surface space
+    amplitude       f             // Amplification coefficient
+    damping         f             // Damping coefficent (per wave)
+    phase           f             // Phase shift in cycles
+    wavelength      f             // Wave length
+  }
+
+  // Ambient, Diffuse, Specular, Transparent definition
+  // NOTE: Only ambient is shown. The other three identical.
+  ambient {
+    across          x y z         // Direction across the top
+    center          x y z         // Center point
+    normal          x y z         // Front direction
+    scale           x y z         // Scaling in all three axes (discrete)
+    scale           f             // Scaling in all three axes (uniform)
+    image           filename.img  // Filename for loading size and texels
+  }
+
+  // Diffuse definition
+  diffuse {}                      // see: ambient
+
+  // Specular definition
+  specular {}                     // see: ambient
+
+  // Transparent definition
+  transparent {}                  // see: ambient
+
+  // Transform definition
+  transform {
+    rotate          x y z         // Rotation about all three axes
+    scale           x y z         // Scaling in all three axes (discrete)
+    translate       x y z         // Translation along all three axes
+    scale           f             // Scalimg in all three axes (uniform)
+  }
+
+  // Global Clip definition
+  global_clip {
+    clip            {}            // One or more clip blocks
+  }
+
+  // Clip definition
+  clip {
+    apex            x y z         // Apex point's location (cone)
+    base            x y z         // Base point's location (cone)
+    center          x y z         // Center point's location (all)
+    normal          x y z         // Normal vector (varies)
+    apex_radius     f             // Radius of the apex ring (cone)
+    base_radius     f             // Radius of the base ring (cone)
+    radius          f             // Radius for spherical clips
+    inside                        // Clip the inside
+    outside                       // Clip the outside
+  }
+
+  // Cone definition
+  cone {
+    apex            x y z         // Where the apex point is located
+    base            x y z         // Where the base point is located
+    apex_radius     f             // Radius of the apex ring
+    base_radius     f             // Radius of the base ring
+    radius          f             // Radius of the base ring
+    clip            {}            // One or more clip blocks
+  }
+
+  // Patch definition
+  patch {
+    normal          x y z         // Vertex surface normal vector
+    vertex          x y z         // Vertex location
+    clip            {}            // One or more clip blocks
+  }
+
+  // Polygon definition
+  polygon {
+    points          i             // Number of vertices
+    vertex          x y z         // Vertex location
+    clip            {}            // One or more clip blocks
+  }
+
+  // Ring definition
+  ring {
+    center          x y z         // Location of the ring's center point
+    normal          x y z         // Ring surface normal vector
+    max_radius      f             // Outer radius
+    min_radius      f             // Inner radius
+    radius          f             // Outer radius
+    clip            {}            // One or more clip blocks
+  }
+
+  // Sphere definition
+  sphere {
+    center          x y z         // Location of the sphere's center point
+    fuzz            f             // Fuzziness coefficient
+    radius          f             // Sphere radius
+    clip            {}            // One or more clip blocks
+  }
+

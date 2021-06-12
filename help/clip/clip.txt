@@ -1,0 +1,19 @@
+
+  // Clip definition
+  clip {
+    apex            x y z         // Apex point's location (cone)
+    base            x y z         // Base point's location (cone)
+    center          x y z         // Center point's location (all)
+    normal          x y z         // Normal vector (varies)
+    apex_radius     f             // Radius of the apex ring (cone)
+    base_radius     f             // Radius of the base ring (cone)
+    radius          f             // Radius for spherical clips
+    inside                        // Clip the inside
+    outside                       // Clip the outside
+  }
+
+  // Global Clip definition
+  global_clip {
+    clip            {}            // One or more clip blocks
+  }
+

@@ -1,0 +1,10 @@
+
+  // Bump definition
+  bump {
+    scale           x y z         // Scale bump space (discrete)
+    translate       x y z         // Traslate bump space
+    scale           f             // Scale bump space (uniform)
+    turbulence      {}            // Turbulence block
+    wave            {}            // Wave block
+  }
+

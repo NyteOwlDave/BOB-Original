@@ -1,0 +1,42 @@
+
+  // Studio definition
+  studio {
+
+    ambient         r g b         // Ambient color
+    at              x y z         // Point to observe
+    from            x y z         // Eye location
+    up              x y z         // Up direction
+
+    angle           degrees       // Field of view
+    aperture        f             // Lens aperture
+    aspect          f             // View aspect ratio
+    focal_length    f             // Lens focal length
+    haze            f             // Haze density
+    width           f             // Lens aperture width
+
+    bunching        i             // Composite shape bunch size
+    depth           i             // Maximum recursion depth
+    resolution      w h           // View dimensions
+    samples         i             // Sample count (non-pinhole lens)
+    start           line          // Session start line
+    stop            line          // Session stop line
+    threshold       i             // Adaptive threshold
+
+    jitter                        // Enable camera jitter
+    no_exp_trans                  // Disable experimental transparency
+    no_shadows                    // Disable shadows
+    caustics                      // Enable caustic effects
+
+    projection      fisheye       // Fisheye projection
+    projection      flat          // Flat projection
+    projection      no_parallax   // Same as flat
+    projection      orthogonal    // Perspective projection
+
+    antialias       none          // No antialiasing
+    antialias       corners       // Average four pixel corners
+    antialias       quick         // Quick sliding window
+    antialias       adaptive      // Adaptive sliding window
+
+    background      r g b         // Solid background color
+    background      {}            // Color plane background
+  }
