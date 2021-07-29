@@ -3,7 +3,7 @@
    Much of this code comes from software included in the book
    Photorealism and Ray Tracing in C
    ISBN 1-55851-247-0
-   Christpher D. Watkins
+   Christopher D. Watkins
    Stephen B. Coy
    Mark Finlay
 
