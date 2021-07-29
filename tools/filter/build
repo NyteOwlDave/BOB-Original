@@ -1,3 +1,0 @@
-#!/bin/bash
-echo Building Project...
-gcc filter.c -o filter

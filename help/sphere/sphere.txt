@@ -1,9 +1,0 @@
-
-  // Sphere definition
-  sphere {
-    center          x y z         // Location of the sphere's center point
-    fuzz            f             // Fuzziness coefficient
-    radius          f             // Sphere radius
-    clip            {}            // One or more clip blocks
-  }
-

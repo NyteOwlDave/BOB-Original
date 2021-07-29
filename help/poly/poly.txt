@@ -1,8 +1,0 @@
-
-  // Polygon definition
-  polygon {
-    points          i             // Number of vertices
-    vertex          x y z         // Vertex location
-    clip            {}            // One or more clip blocks
-  }
-
