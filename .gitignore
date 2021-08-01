@@ -1,4 +1,4 @@
 rt/
-*.obj
-*.o
+*.[oa]
+*~
 yyz.txt
