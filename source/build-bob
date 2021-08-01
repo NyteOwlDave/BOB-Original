@@ -29,7 +29,7 @@ function Link() {
 }
 
 function Compile() {
-    gcc -c "$1.c" -o "obj/$1.o" 2>> obj/yyz.txt;
+    gcc -c "$1.c" -o "obj/$1.o" 2> obj/yyz.txt;
 }
 
 function Make() {
