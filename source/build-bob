@@ -38,7 +38,7 @@ function Make() {
     local a
     while read a
     do
-        Compile "$a"
+        Compile "$a" 2> yyz.txt
         local ReturnCode=$?
         if [ $ReturnCode -ne 0 ]
         then
