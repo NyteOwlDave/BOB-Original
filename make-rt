@@ -1,3 +1,19 @@
 #!/bin/bash
 
-# TODO... make runtime folder
+mkdir rt
+cd rt
+
+while read a
+do
+    mkdir $a
+done << ___
+img
+map
+obj
+plate
+prj
+scene
+studio
+surf
+tools
+___
