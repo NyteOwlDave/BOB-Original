@@ -42,4 +42,4 @@ tracer-texture.o \
 tracer-trace.o \
 tracer-wave.o \
 windows.o \
--lm
+-lm 2>> yyz.txt
