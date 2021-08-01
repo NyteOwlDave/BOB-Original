@@ -29,7 +29,7 @@ function Link() {
 }
 
 function Compile() {
-    gcc -c "$1.c" -o "obj/$1.o" 2> obj/yyz.txt;
+    gcc -c "$1.c" -o "obj/$1.o";
 }
 
 function Make() {
@@ -38,7 +38,7 @@ function Make() {
     local a
     while read a
     do
-        Compile "$a" 2> yyz.txt
+        Compile "$a" 2>> yyz.txt
         local ReturnCode=$?
         if [ $ReturnCode -ne 0 ]
         then
