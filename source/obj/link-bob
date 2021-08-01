@@ -1,0 +1,45 @@
+#!/bin/bash
+# Link BOB App
+
+gcc -o bob csg-bound.o \
+csg-clip.o \
+general-data.o \
+general-file.o \
+general-main.o \
+general-memory.o \
+general-stats.o \
+general-version.o \
+hacks.o \
+lang-extra.o \
+lang-macro.o \
+lang-parse.o \
+lang-preproc.o \
+lang-string.o \
+lang-tokens.o \
+log.o \
+math-noise.o \
+math-vector.o \
+prompt-bob.o \
+prompt-diag.o \
+prompt-lang.o \
+prompt-main.o \
+prompt-state.o \
+prompt.o \
+shape-cone.o \
+shape-null.o \
+shape-poly.o \
+shape-ring.o \
+shape-sphere.o \
+shape.tri.o \
+system.o \
+tracer-inter.o \
+tracer-pic.o \
+tracer-pqueue.o \
+tracer-screen.o \
+tracer-shade.o \
+tracer-shadow.o \
+tracer-texture.o \
+tracer-trace.o \
+tracer-wave.o \
+windows.o \
+-lm

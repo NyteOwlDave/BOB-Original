@@ -1,0 +1,59 @@
+#!/bin/bash
+
+function LastCall() {
+    if [ $1 -ne 0 ]
+    then
+        echo ERROR: $ReturnCode
+        exit $ReturnCode
+    fi
+}
+
+function Distribute() {
+    echo
+    echo Distributing...
+    local SRC=./obj/bob
+    local DST=../rt/bob
+    cp $SRC $DST
+    LastCall $?
+    rm $SRC
+}
+
+function Link() {
+    echo
+    echo Linking...
+    cd obj
+    . ./link-bob
+    local ReturnCode=$?
+    cd ..
+    LastCall $ReturnCode
+}
+
+function Compile() {
+    gcc -c "$1.c" -o "obj/$1.o" 2>> obj/yyz.txt;
+}
+
+function Make() {
+    echo
+    echo Compiling...
+    local a
+    while read a
+    do
+        Compile "$a"
+        local ReturnCode=$?
+        if [ $ReturnCode -ne 0 ]
+        then
+            gedit obj/yyz.txt
+            LastCall $ReturnCode
+        fi
+    done
+    Link
+    Distribute
+}
+
+function Exec() {
+    >obj/yyz.txt
+    Make < docs/c.list;
+}
+
+Exec "$@";
+
