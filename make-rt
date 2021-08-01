@@ -1,11 +1,21 @@
 #!/bin/bash
 
-mkdir rt
-cd rt
+function md()
+{
+    mkdir $1 2> /dev/null
+    if [ -d $1 ]
+    then
+        touch README.md
+    fi
+}
 
+function make_folders()
+{
+md rt
+cd rt
 while read a
 do
-    mkdir $a
+    md $a
 done << ___
 img
 map
@@ -17,3 +27,15 @@ studio
 surf
 tools
 ___
+
+cd ..
+}
+
+function main()
+{
+    echo
+    echo Creating Runtime Environment...
+    make_folders
+}
+
+main "$@"

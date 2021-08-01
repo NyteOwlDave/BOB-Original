@@ -13,9 +13,8 @@ function Distribute() {
     echo Distributing...
     local SRC=./obj/bob
     local DST=../rt/bob
-    cp $SRC $DST
+    mv $SRC $DST
     LastCall $?
-    rm $SRC
 }
 
 function Link() {

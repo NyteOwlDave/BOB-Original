@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# Builds and links the bob executable
+# Create the runtime environment
+./make-rt
 
+# Change to source folder
 cd source
+
+# Builds and links the bob executable
 ./build-bob
 

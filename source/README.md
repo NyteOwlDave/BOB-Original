@@ -19,6 +19,8 @@ generated with the `make-rt` script in `BOB-Original`.
 This command only builds the file folders needed for the runtime
 system.
 
+__NOTE__: `build` calls `make-rt`.
+
 # Build
 
 Building the project is easy. Just run the `build` script in
@@ -28,6 +30,7 @@ It will also create a file named `yyz.txt` in the
 the `source\obj` folder. You can examine this to check for
 compile or links errors, respectively.
 
+__NOTE__: `build` calls `make-rt`.
 
 # Clean
 
