@@ -13,9 +13,11 @@ function make_folders()
 {
 md rt
 cd rt
+>bobpath
 while read a
 do
     md $a
+    echo $a >> bobpath
 done << ___
 img
 map
@@ -39,3 +41,4 @@ function main()
 }
 
 main "$@"
+

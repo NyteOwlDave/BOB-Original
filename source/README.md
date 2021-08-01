@@ -37,5 +37,23 @@ __NOTE__: `build` calls `make-rt`.
 The `clean` script in the `source/obj` folder will remove object files and
 the temporary report file `yyz.txt` mentioned above.
 
+# Cloning
+
+You can use the `clone-repo` script to clone any of the four Bob repositories.
+
+Just type one of:
+
+```
+./clone-repo original
+./clone-repo runtime
+./clone-repo tools
+./clone-repo help
+```
+
+Note that this is the original repo, so that option is included only for
+completeness.
+
+You can use the `clone-repo` script comments for better understanding.
+
 ---
 

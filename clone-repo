@@ -1,0 +1,68 @@
+#!/bin/bash
+
+# This script clones a BOB repository
+
+clone()
+{
+    local URL="https://github.com/NyteOwlDave/$1.git"
+    cd ..
+    echo "Cloning $1 ..."
+    echo "git clone '$URL'"
+}
+
+clone_original()
+{
+    clone BOB-Original
+}
+
+clone_runtime()
+{
+    clone BOB-Runtime
+}
+
+clone_tools()
+{
+    clone BOB-Tools
+}
+
+clone_help()
+{
+    clone BOB-Help
+}
+
+usage()
+{
+    echo
+    echo "Usage: clone <repo>"
+    echo
+    echo "Where <repo> is in:"
+    echo
+    echo "original"
+    echo "runtime"
+    echo "tools"
+    echo "help"
+    exit 0
+}
+
+main()
+{
+    case $1 in
+        original)
+            clone_original
+            ;;
+        runtime)
+            clone_runtime
+            ;;
+        tools)
+            clone_tools
+            ;;
+        help)
+            clone_help
+            ;;
+        *)
+            usage
+            ;;
+    esac
+}
+
+main "$@"
