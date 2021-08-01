@@ -13,10 +13,19 @@ The version of GCC was 7.5.0.
 
 # Preparation
 
-The app requires a specific file system arrangment. This can be
-generated with the `make-rt` script.
+The app requires a specific file system arrangement. This can be
+generated with the `make-rt` script in `BOB-Original`.
+
+This command only builds the file folders needed for the runtime
+system.
 
 # Build
 
-Building the project is easy. Just run the `build` script. This will
-create an executable named `bob` in the `rt` folder.
+Building the project is easy. Just run the `build` script in
+`BOB-Original`. This will create an executable named `bob` in the `rt` folder.
+
+It wll also create a file named `yyz.txt` in both the `source` and
+the `source\obj` folders. You can examine these to check for
+compile or links errors, respectively.
+
+---
