@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include <ctype.h>
 #include "inc/bob.h"
 
 #define BOB_ENV         "BOB"		// Environment variable name
@@ -32,6 +33,9 @@ static LPSTR	g_paths[1+MAX_PATHS];
 
 void init_env() {
 
+    static char* szBobPath = "bobpath";
+    static char* szBobPathDefault = "prj;img;map;obj;scene;studio;surf";
+
 	LPSTR path;
 	LPSTR sub;
 	// LPSTR ctx;
@@ -40,19 +44,40 @@ void init_env() {
 	g_num_paths = 1;
 	g_paths[0] = "";
 
-	sub = getenv(BOB_ENV);
-    if (!sub) {
-        LogPrint("Missing BOB environment variable.");
-        sub = ".";
+    if (FileExists(szBobPath))
+    {
+        char temp[MAX_PATH+1];
+        FILE* fp = fopen(szBobPath, "r");
+        while(fgets(temp, MAX_PATH, fp))
+        {
+            sub = temp + strlen(temp);
+            while (sub > temp)
+            {
+                --sub;
+                if (isspace(*sub)) *sub = 0;
+            }
+            g_paths[g_num_paths] = strdup(temp);
+            g_num_paths++;
+        }
     }
-	path = strdup(sub);
 
-	sub = strtok(path, DELIMS);
-	while(sub && g_num_paths < MAX_PATHS) {
-		g_paths[g_num_paths] = strdup(sub);
-		g_num_paths++;
-		sub = strtok(NULL, DELIMS);
-	}
+    else
+    {
+        sub = getenv(BOB_ENV);
+        if (!sub) {
+            LogPrint("Missing BOB environment variable.");
+            sub = szBobPathDefault;
+        }
+        path = strdup(sub);
+
+        sub = strtok(path, DELIMS);
+        while(sub && g_num_paths < MAX_PATHS) {
+            g_paths[g_num_paths] = strdup(sub);
+            g_num_paths++;
+            sub = strtok(NULL, DELIMS);
+        }
+    }
+
 	g_paths[g_num_paths] = NULL;
 }
 
