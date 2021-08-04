@@ -317,7 +317,7 @@ void PrintUsage() {
 	fprintf(stderr, "       -o run only the preprocessor.\n");
 	fprintf(stderr, "       -b set bunching factor.\n");
 	Print("");
-	fprintf(stderr, "Uses <session>.b for I/P file and <session>.img for O/P file.\n");
+	fprintf(stderr, "Uses <session>.bob for I/P file and <session>.img for O/P file.\n");
 	Print("");
 }
 
