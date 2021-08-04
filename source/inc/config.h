@@ -9,8 +9,8 @@
 #ifndef CONFIG_DEFINED
 #define CONFIG_DEFINED
 
-#define STABLE_VERSION  "v1.0.1"        // Stable version number
-#define STABLE_DATE     "Aug 1, 2021"   // Stable version date
+#define STABLE_VERSION  "v1.0.2"        // Stable version number
+#define STABLE_DATE     "Aug 4, 2021"   // Stable version date
 
 #define	NSLABS			(3)			// number of bounding slab axes
 #define	BUNCHINGFACTOR	(4)			// composite bunch size
